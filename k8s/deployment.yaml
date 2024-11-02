@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e-store-deployment
+  labels:
+    app: e-store
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: e-store
+  template:
+    metadata:
+      labels:
+        app: e-store
+    spec:
+      containers:
+      - name: e-store
+        image: khaouitiabdelhakim/e-store:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
